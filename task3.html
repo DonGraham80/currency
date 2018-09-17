@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+
+
+    <title>Javascript example</title>
+
+    <style>
+        table {
+            border: solid 1px #bedef4;
+            border-collapse: collapse;
+            border-spacing: 0;
+            font: normal 13px Arial, sans-serif;
+        }
+        table thead th {
+            background-color: #bedef4;
+            border: solid 1px #bedef4;
+            color: #336B6B;
+            padding: 10px;
+            text-align: left;
+            text-shadow: 1px 1px 1px #fff;
+            text-transform: uppercase;
+        }
+        table tbody td {
+            border: solid 1px #bedef4;
+            color: #333;
+            padding: 10px;
+            text-shadow: 1px 1px 1px #fff;
+        }
+
+        tr:nth-child(even) {
+            background: #bedef4;
+        }
+        tr:nth-child(odd) {
+            background: #FFF;
+        }
+
+        #button {
+            border: none;
+            color: #000000;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            background-color: #bedef4;
+            margin-top: 10px;
+        }
+
+    </style>
+</head>
+<body>
+<h3>TASK 3</h3>
+<div id="data"></div>
+<button id="button">Load Data</button>
+
+
+<script>
+    $( "#button" ).click(function() {
+
+        // remove the table incase we have called for the data already
+        $('#container').remove();
+
+        $.getJSON( "json.json", function( data ) {
+            var items = [];
+
+            // add a table to our div
+            $('#data').append('<table id="container"></table>')
+
+            // add our headings
+            items.push(" <thead> <tr> <th>Affiliate ID</th> <th>Affiliate Code</th> <th>Affiliate Name</th> <th>Contact Name</th> <th>Tel</th>" +
+                "<th>Dealer Code</th> <th>Country</th> <th>Updated</th> </tr> </thead>");
+
+            // loop through json and add items to item
+            $.each( data, function( key, val ) {
+                items.push("<tr><td id='" + key + "'>" + val.AffiliateID + "</td>" +
+                    "<td>"+val.AffiliateCode+"</td>"+
+                    "<td>"+val.AffiliateName+"</td>"+
+                    "<td>"+val.ContactName+"</td>"+
+                    "<td>"+val.TelNo1+"</td>"+
+                    "<td>"+val.DealerCode+"</td>"+
+                    "<td>"+val.CountryCode+"</td>"+
+                    "<td>"+val.UpdatedAt+"</td>"+
+                    "</tr>");
+            });
+
+            // add to our table.
+            $( "<table/>", {
+               html: items.join( "" )
+            }).appendTo( "#container" );
+        });
+    });
+</script>
+</body>
+</html>
