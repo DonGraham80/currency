@@ -20,7 +20,7 @@
     <div class="container">
         <h1 class="display-3">Welcome</h1>
         <p>The following is provided for the test document for Foreign Currency Direct. <br> The source files can be downloaded using the button below. Or Use the links below for working examples. Each example will open in a new window to the script.</p>
-        <p><a class="btn btn-primary btn-lg" href="#" role="button">Download via GITHUB &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg" href="https://github.com/DonGraham80/currency" target="_blank" role="button">Download via GITHUB &raquo;</a></p>
     </div>
 </div>
 
